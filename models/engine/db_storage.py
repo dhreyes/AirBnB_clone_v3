@@ -60,11 +60,7 @@ class DBStorage:
         Returns the number of objects in storage matching the given class
         If no class is passed, returns the count of all objects in storage
         """
-        count = 0
-        for key in self.__objects:
-            if cls is None or cls is self.__objects[key].__class__:
-                count += 1
-        return (count)
+        return len(self.all(cls))
 
     def all(self, cls=None):
         """query on the current database session"""

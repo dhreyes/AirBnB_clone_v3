@@ -44,14 +44,7 @@ class FileStorage:
         Returns the number of objects in storage matching the given class
         If no class is passed, returns the count of all objects in storage
         """
-        if cls is None:
-            return len(self.__objects)
-        else:
-            count = 0
-            for key, value in self.__objects.items():
-                if cls == value.__class__ or cls == value.__class__.__name__:
-                    count += 1
-            return count
+        return len(self.all(cls))
 
     def all(self, cls=None):
         """returns the dictionary __objects"""
