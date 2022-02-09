@@ -34,12 +34,11 @@ class FileStorage:
         """
         key = cls.__name__ + '.' + id
         new_dic = self.all(cls)
-        print(new_dic)
         # Iterate through this to find the value of cls to return, it should match the id that I recieved
-        # return object y ya
-        if key in self.__objects:
-            return self.__objects[key]
-        return None
+        # return object
+        for key2, value in new_dic.items():
+            if key2 == key:
+                return value
 
     def count(self, cls=None):
         """
