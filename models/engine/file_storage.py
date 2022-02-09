@@ -33,6 +33,10 @@ class FileStorage:
         or None if not found
         """
         key = cls.__name__ + '.' + id
+        new_dic = self.all(cls)
+        print(new_dic)
+        # Iterate through this to find the value of cls to return, it should match the id that I recieved
+        # return object y ya
         if key in self.__objects:
             return self.__objects[key]
         return None
@@ -44,7 +48,9 @@ class FileStorage:
         Returns the number of objects in storage matching the given class
         If no class is passed, returns the count of all objects in storage
         """
-        return len(self.all(cls))
+        if cls is not None:
+            return len(self.all(cls))
+        return len(self.all())
 
     def all(self, cls=None):
         """returns the dictionary __objects"""
